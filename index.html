@@ -1,3 +1,314 @@
-<h1>Hello Dosto</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhil Trivedi | DevOps Portfolio</title>
 
-<p>How are you</p>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #020617;
+      --glass: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.18);
+      --primary: #22d3ee;
+      --accent: #a78bfa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #1e293b, #020617 60%);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background Blobs */
+    .blob {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      filter: blur(120px);
+      opacity: 0.4;
+      z-index: -1;
+      animation: float 12s infinite ease-in-out;
+    }
+
+    .blob:nth-child(1) { top: -100px; left: -100px; }
+    .blob:nth-child(2) { bottom: -120px; right: -120px; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(40px); }
+    }
+
+    /* Glass Card */
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 14px 30px;
+      display: flex;
+      gap: 30px;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 120px 20px 80px;
+      display: grid;
+      gap: 40px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, white, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero span {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin-top: 16px;
+      color: #cbd5f5;
+      font-size: 1.1rem;
+    }
+
+    .cta {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: white;
+      transition: 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    /* Grid Sections */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 26px;
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 40px;
+    }
+
+    footer span {
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* Glow hover links */
+    .socials a {
+      margin: 0 8px;
+      color: #cbd5f5;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: white;
+      text-shadow: 0 0 12px var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob"></div>
+  <div class="blob"></div>
+
+  <nav class="glass">
+    <a href="#">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero glass">
+      <h1>Hi, I'm <span>Nikhil Trivedi</span></h1>
+      <p>DevOps Engineer in the making 🚀 | Docker • AWS • Linux • CI/CD</p>
+
+      <div class="cta">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="grid">
+      <div class="card glass">
+        <h3>🐳 Docker</h3>
+        <p>Containerization, Dockerfiles, Compose, networking, volumes and real-world deployments.</p>
+      </div>
+      <div class="card glass">
+        <h3>☁️ Cloud</h3>
+        <p>AWS EC2 deployments, production setups, security groups and cloud-first architecture.</p>
+      </div>
+      <div class="card glass">
+        <h3>⚙️ DevOps</h3>
+        <p>CI/CD concepts, automation, Linux internals and building reliable deployment workflows.</p>
+      </div>
+      <div class="card glass">
+        <h3>🛠 Backend</h3>
+        <p>MySQL, APIs, containers with databases and multi-service architecture projects.</p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="grid">
+      <div class="card glass">
+        <h3>🔗 Multi-Container App</h3>
+        <p>Docker Compose project with app + MySQL, environment configs and persistent volumes.</p>
+      </div>
+      <div class="card glass">
+        <h3>📦 Custom Dockerfiles</h3>
+        <p>Built optimized images from scratch and explored image layering and caching deeply.</p>
+      </div>
+      <div class="card glass">
+        <h3>☁️ EC2 Deployments</h3>
+        <p>Real-world container deployments on AWS with networking and troubleshooting.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="hero glass">
+      <h1>Let's Build Something <span>Awesome</span></h1>
+      <p>Open to internships, collaborations and DevOps opportunities.</p>
+
+      <div class="socials">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="mailto:nikhil@example.com">Email</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Built with ❤️ by <span>Nikhil Trivedi</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
