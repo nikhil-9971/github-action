@@ -1,0 +1,38 @@
+name: Porfolio
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - '**.html'
+            - '**.css'
+            - '**.js'
+
+permissions:
+    pages: write
+    id-token: write           
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        steps:
+            #checkout(get) code from repository
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            # set up Github Pages
+            - name: Set up Github Pages
+              uses: actions/configure-pages@v4
+
+            # static code artifact
+            - name: Upload static Code              
+              uses: actions/upload-pages-artifact@v4
+              with:
+                path: "."
+            
+            # Deploy to Github Pages
+            - name: Deploy to Github Pages  
+              uses: actions/deploy-pages@v4
