@@ -5,7 +5,10 @@ name: hello
 on:
   push:
     branches: [main]
-    paths: '**.html'
+    paths:
+      - '**.yml'
+      - '**.yaml'
+      - '**.html'
 
 #job inside in workflow
 jobs:
