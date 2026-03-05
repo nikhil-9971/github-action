@@ -1,0 +1,19 @@
+name: Manual Triggr
+
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: This is the environment value where work flow runs
+                default: 'staging'
+                required: true
+                type: choice
+                options:
+                    - prod
+                    - staging        
+jobs:
+    manual_trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Manual trigger is running
+              run: echo "Manual trigger running for environment ${{ github.event.inputs.environment }}"
