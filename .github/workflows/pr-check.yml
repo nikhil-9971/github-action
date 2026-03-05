@@ -4,6 +4,8 @@ on:
     pull_request:
         branches: [main]
         types: [opened, synchronize, reopened]
+    schedule:
+        - cron: '0 0 * * *' # Runs every day at midnight
 
 
 jobs:
@@ -14,3 +16,8 @@ jobs:
             - name: PR check is runnning
               run: echo "PR check running for branch ${{ github.head_ref }}"
     
+    run-schedule:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Schedule check is running
+              run: echo "Schedule check running at $(date)"          
