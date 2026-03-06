@@ -11,7 +11,7 @@ jobs:
             - name: OS name is
               run: |
                 cat /etc/os-release
-                lasb_release -a
+                lsb_release -a
             
             - name: Check Host Name
               run: echo "Host name is $(hostname)"
