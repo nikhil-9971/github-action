@@ -18,7 +18,15 @@ jobs:
 
             - name: Current user running the job
               run: echo "Current user is $(whoami)"
-         
+
+            - name: Check preinstalled software
+              run: |
+                echo "Checking pre-installed software on ubuntu-latest runner"
+                echo "Docker version: " && docker --version || echo "Docker is not installed"
+                echo "Python version: " && python --version || echo "Python is not installed"
+                echo "Node.js version: " && node --version || echo "Node.js is not installed"
+                echo "Git version: " && git --version || echo "Git is not installed"
+
     windows-latest:
         runs-on: windows-latest
         steps:
