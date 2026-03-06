@@ -1,0 +1,21 @@
+name: Github Hoster Runner
+
+on:
+    push:
+        branches: [main]
+    
+jobs:
+    ubuntu-latest:
+        runs-on: ubuntu-latest
+        steps:
+            - name: OS name is
+              run: |
+                cat /etc/os-release
+                lasb_release -a
+            
+            - name: Check Host Name
+              run: echo "Host name is $(hostname)"
+
+            - name: Current user running the job
+              run: echo "Current user is $(whoami)"
+                      
