@@ -9,6 +9,8 @@ on:
 jobs:
     set-output:
         runs-on: ubuntu-latest
+        outputs:
+            date: ${{ steps.set_output.outputs.date }}
         steps:
             - name: Set output variable
               id: set_output
