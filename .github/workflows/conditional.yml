@@ -1,10 +1,11 @@
 name: Conditional Workflow
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        
+  workflow_dispatch:
+    # # push:
+    #     branches: [main]
+    # pull_request:
+    
 jobs:
     conditional-job:
         runs-on: ubuntu-latest

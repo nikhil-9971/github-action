@@ -3,12 +3,13 @@ name: hello
 
 # When workflow is start
 on:
-  push:
-    branches: [main]
-    paths:
-      - '**.yml'
-      - '**.yaml'
-      - '**.html'
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - '**.yml'
+  #     - '**.yaml'
+  #     - '**.html'
 
 #job inside in workflow
 jobs:

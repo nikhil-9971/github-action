@@ -1,12 +1,12 @@
 name: Porfolio
 
 on:
-    push:
-        branches: [main]
-        paths:
-            - '**.html'
-            - '**.css'
-            - '**.js'
+    # push:
+    #     branches: [main]
+    #     paths:
+    #         - '**.html'
+    #         - '**.css'
+    #         - '**.js'
     workflow_dispatch:
 permissions:
     pages: write
