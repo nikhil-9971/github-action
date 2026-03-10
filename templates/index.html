@@ -1,111 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Zero To Hero</title>
+
+<title>DevSecOps Pipeline | Nikhil Trivedi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Outfit',sans-serif
+}
 
 body{
+
+background:#0a0f1c;
+color:white;
 min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-color:#e0e0e0
+overflow-x:hidden;
+padding:40px
+
 }
 
-.container{text-align:center;padding:2rem;max-width:640px}
+/* background glow */
+
+body::before{
+
+content:"";
+position:fixed;
+width:800px;
+height:800px;
+background:radial-gradient(circle,#00f2fe33,transparent 60%);
+top:-200px;
+left:-200px;
+z-index:-1
+
+}
+
+body::after{
+
+content:"";
+position:fixed;
+width:800px;
+height:800px;
+background:radial-gradient(circle,#7b2ff733,transparent 60%);
+bottom:-200px;
+right:-200px;
+z-index:-1
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+text-align:center
+
+}
 
 h1{
-font-size:2.5rem;
-background:linear-gradient(90deg,#00d2ff,#7b2ff7);
+
+font-family:'Orbitron',sans-serif;
+font-size:3rem;
+
+background:linear-gradient(90deg,#00f2fe,#7b2ff7);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-margin-bottom:.5rem
+
+margin-bottom:10px
+
 }
 
-.badge{
-display:inline-block;
-margin:1rem 0;
-padding:.4rem 1.2rem;
-border:1px solid #7b2ff7;
-border-radius:999px;
-font-size:.9rem;
-color:#c4b5fd
+.subtitle{
+
+color:#8ea6c9;
+margin-bottom:40px
+
 }
 
-.pipeline{
-margin-bottom:1.5rem;
-font-size:.9rem;
-color:#9ca3af
-}
+/* cards */
 
 .cards{
+
 display:flex;
-gap:1rem;
 justify-content:center;
-flex-wrap:wrap
+flex-wrap:wrap;
+gap:20px;
+margin-bottom:60px
+
 }
 
 .card{
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.1);
+
+width:180px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.15);
+
+padding:25px;
 border-radius:12px;
-padding:1.4rem;
-min-width:150px
+
+transition:.3s
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(0,0,0,0.6)
+
 }
 
 .card span{
-display:block;
-font-size:.7rem;
-color:#9ca3af;
-margin-bottom:.4rem;
-letter-spacing:.1em
+
+font-size:13px;
+color:#9fb3c8
+
 }
 
 .card strong{
-font-size:1.2rem;
-color:#f9fafb
+
+display:block;
+margin-top:10px;
+font-size:20px
+
 }
+
+/* pipeline */
+
+.pipeline{
+
+margin-top:40px
+
+}
+
+.pipeline h2{
+
+margin-bottom:30px;
+font-family:'Orbitron'
+
+}
+
+.steps{
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+gap:12px
+
+}
+
+.step{
+
+background:#111a2e;
+
+border:1px solid #2f4c7c;
+
+padding:14px 20px;
+
+border-radius:8px
+
+}
+
+.arrow{
+
+color:#00f2fe;
+font-size:22px
+
+}
+
+/* architecture */
+
+.architecture{
+
+margin-top:80px
+
+}
+
+.diagram{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+margin-top:30px
+
+}
+
+.box{
+
+background:rgba(255,255,255,0.05);
+
+border:1px solid rgba(255,255,255,0.12);
+
+padding:25px;
+width:200px;
+
+border-radius:12px;
+
+transition:.3s
+
+}
+
+.box:hover{
+
+background:rgba(255,255,255,0.12)
+
+}
+
+footer{
+
+margin-top:80px;
+color:#8ea6c9;
+font-size:14px
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>DevOps Zero To Hero</h1>
-<div class="badge">Josh Batch 10 (USA Edition v3)</div>
+<h1>DevSecOps Pipeline</h1>
 
-<div class="pipeline">
-Built • Tested • Linted • Deployed via GitHub Actions
-</div>
+<p class="subtitle">
+Secure CI/CD Deployment using GitHub Actions, Docker & AWS ECS
+</p>
+
+<!-- tech cards -->
 
 <div class="cards">
+
 <div class="card">
 <span>Framework</span>
-<strong>Flask 3.1</strong>
+<strong>Flask</strong>
 </div>
 
 <div class="card">
-<span>Runtime</span>
-<strong>Python 3.14</strong>
+<span>Language</span>
+<strong>Python</strong>
 </div>
 
 <div class="card">
-<span>Deploy</span>
-<strong>AWS ECS</strong>
+<span>Container</span>
+<strong>Docker</strong>
 </div>
 
 <div class="card">
 <span>CI/CD</span>
 <strong>GitHub Actions</strong>
 </div>
+
+<div class="card">
+<span>Cloud</span>
+<strong>AWS ECS</strong>
 </div>
+
+<div class="card">
+<span>Security</span>
+<strong>DevSecOps</strong>
+</div>
+
+</div>
+
+<!-- pipeline -->
+
+<div class="pipeline">
+
+<h2>CI/CD Pipeline</h2>
+
+<div class="steps">
+
+<div class="step">Developer Push</div>
+
+<div class="arrow">→</div>
+
+<div class="step">GitHub Repo</div>
+
+<div class="arrow">→</div>
+
+<div class="step">GitHub Actions</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Security Scan</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Docker Build</div>
+
+<div class="arrow">→</div>
+
+<div class="step">Deploy to AWS ECS</div>
+
+</div>
+
+</div>
+
+<!-- architecture diagram -->
+
+<div class="architecture">
+
+<h2>DevSecOps Architecture</h2>
+
+<div class="diagram">
+
+<div class="box">
+👨‍💻 Developer
+</div>
+
+<div class="box">
+🐙 GitHub Repository
+</div>
+
+<div class="box">
+⚙️ GitHub Actions CI
+</div>
+
+<div class="box">
+🛡 Security Scan
+</div>
+
+<div class="box">
+🐳 Docker Image
+</div>
+
+<div class="box">
+☁ AWS ECS
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+Built by Nikhil Trivedi • DevOps Engineer • GitHub Actions + DevSecOps
+
+</footer>
 
 </div>
 
