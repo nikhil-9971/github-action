@@ -1,7 +1,8 @@
 name: DevSecOps End to End Pipeline
 
 on:
-    workflow_dispatch:
+    push:
+        branches: [main]
 
 
 jobs:
@@ -28,5 +29,10 @@ jobs:
     trivy:
         needs: [build]
         uses: ./.github/workflows/image-scan.yml
+        secrets: inherit
+
+    deploy:
+        needs: [trivy]
+        uses: ./.github/workflows/deploy-to-server.yml
         secrets: inherit
 
